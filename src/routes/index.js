@@ -6,6 +6,10 @@ const routes = Router();
 
 routes.use('/v1' , route)
 
+routes.get('/', (req, res , next ) => {
+    // res.send('hello world')
+    res.json({status : true , message : 'Sever is alives'})
+})
 
 export default routes;
 

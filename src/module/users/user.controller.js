@@ -5,6 +5,7 @@ export const register = (req , res, next) =>{
         const {name , address , phone_num , password , email } = req.body;
         // console.log(name , address , phone_num , password , email );
         userService.register({name , address , phone_num , password , email});
+        
     }
     catch (err){
         next(err);
