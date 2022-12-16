@@ -1,5 +1,6 @@
 import express from 'express';
 import routes from './routes/index.js';
+import {sequelize} from './database/connection.js'
 
 const app = express();
 const port = 5999;
@@ -8,10 +9,13 @@ const host = '127.0.0.1';
 app.use(express.json());
 
 app.use('/api', routes);
-// app.use('/', (req, res, next) => {
-//     res.json({ status: true, message: '-----Server is alive----' })
-// })
 
-app.listen(port, host, () => {
-    console.log(`Server started in http://${host}:${port}`);
+app.listen(port, host, async() => {
+    try {
+        await sequelize.authenticate();
+        await sequelize.sync({ force: true });
+        console.log(`Server started in http://${host}:${port}`);
+      } catch (error) {
+        console.error('Unable to connect to the database:', error);
+      }
 })
