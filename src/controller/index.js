@@ -1,4 +1,3 @@
-import * as userController from  '../module/users/user.comtroller.js';
+import * as userController from '../module/users/user.controller.js';
 
-
-export { userController }
+export { userController };

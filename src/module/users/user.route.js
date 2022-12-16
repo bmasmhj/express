@@ -1,15 +1,10 @@
 import { Router } from 'express';
-import * as userController from './user.controller.js';
+import {userController} from '../../controller/index.js';
 
-const routes = Router();
+const router = Router();
 
-routes.use('./sign-up' , userController.register);
-routes.use('./log-in' , userController.login);
-// routes.use('/reset-password' , userController);
+router.post('/sign-up', userController.register);
 
+router.post('/log-in', userController.login);
 
-
-
-export default routes;
-
-// es6 
+export default router;

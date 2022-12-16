@@ -1,21 +1,17 @@
-import express  from 'express';
+import express from 'express';
 import routes from './routes/index.js';
+
 const app = express();
 const port = 5999;
 const host = '127.0.0.1';
 
 app.use(express.json());
 
-app.get('/', (req, res , next ) => {
-    // res.send('hello world')
-    res.json({status : true , message : 'Sever is alives'})
-})
-app.use('/api' , routes );
-// app.post('/', (req, res , next ) => {
-//     // res.send('hello world')
-//     res.json({data:req.body})
+app.use('/api', routes);
+// app.use('/', (req, res, next) => {
+//     res.json({ status: true, message: '-----Server is alive----' })
 // })
 
-app.listen(port , host , () =>{
-        console.log(`server starteds in http://${host}:${port}`);
+app.listen(port, host, () => {
+    console.log(`Server started in http://${host}:${port}`);
 })

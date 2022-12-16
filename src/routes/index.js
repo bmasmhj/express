@@ -1,16 +1,8 @@
-import { Router } from 'express';
-import route from './v1/index.js';
+import { Router } from "express";
+import v1 from './v1/index.js';
 
+const router = Router();
 
-const routes = Router();
+router.use('/v1', v1);
 
-routes.use('/v1' , route)
-
-routes.get('/', (req, res , next ) => {
-    // res.send('hello world')
-    res.json({status : true , message : 'Sever is alives'})
-})
-
-export default routes;
-
-// es6 
+export default router;

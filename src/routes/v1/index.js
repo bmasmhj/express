@@ -1,14 +1,8 @@
 import { Router } from 'express';
-import userRoute from '../../module/users/user.route.js'
-const route = Router();
+import userRoute from '../../module/users/user.route.js';
 
-route.get('/', (req, res , next ) => {
-    // res.send('hello world')
-    res.json({status : true , message : 'Sever is v1'})
-})
-route.post('./auth', userRoute);
+const router = Router();
 
+router.use('/auth',userRoute)
 
-export default route;
-
-// es6 
+export default router;
