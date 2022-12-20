@@ -1,18 +1,21 @@
-const { Sequelize, Model, DataTypes } = require("sequelize");
-const sequelize = new Sequelize("sqlite::memory:");
+import { Sequelize, Model, DataTypes }  from 'sequelize';
+import {sequelize} from '../../database/connection.js'
 
-const User = sequelize.define("user", {
-  name: DataTypes.TEXT,
-  favoriteColor: {
-    type: DataTypes.TEXT,
-    defaultValue: 'green'
+export const User = sequelize.define("user", {
+  first_name : {
+     type : DataTypes.STRING,
+     allowNull : false,
   },
-  age: DataTypes.INTEGER,
-  cash: DataTypes.INTEGER,
+    last_name : {
+     type : DataTypes.STRING,
+  } ,
+    email : {
+     type : DataTypes.STRING,
+     allowNull : false,
+  } ,
+    password : {
+     type : DataTypes.STRING,
+     allowNull : false,
+  } 
   
 });
-
-(async () => {
-  await sequelize.sync({ force: true });
-  // Code here
-})();

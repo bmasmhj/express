@@ -1,8 +1,8 @@
 import { userService } from '../../service/index.js';
-export const register = (req, res, next) => {
+export const register = async(req, res, next) => {
     try {
-        const { name, addres, phone_number, password, email } = req.body;
-        const registeredUser = userService.register({ name, addres, phone_number, password, email });
+        const { first_name, last_name , email, password } = req.body;
+        const registeredUser = await userService.register({ first_name, last_name, password, email });
         return res.json(registeredUser);
     } catch (err) {
         next(err);

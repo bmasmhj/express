@@ -1,6 +1,7 @@
-export const register = (userData)=>{
+import {User} from './User.model.js';
+export const register = async(userData)=>{
     try {
-        return userData;
+        return await User.create(userData);
     } catch (err) {
         throw err;
     }
