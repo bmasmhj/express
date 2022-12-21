@@ -1,7 +1,12 @@
 import {User} from './User.model.js';
+import {hash} from  '../../utils/encryption.js';
 export const register = async(userData)=>{
     try {
-        return await User.create(userData);
+        const {password , ...remaining } = userData;
+
+        const hasedPassword = await hash(password)
+        console.log(hasedPassword)
+        return await User.create({...remaining , password:hasedPassword});
     } catch (err) {
         throw err;
     }
