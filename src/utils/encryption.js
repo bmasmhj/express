@@ -1,9 +1,9 @@
-import { hashSync, compareSync } from 'bcryptjs';
+import bycrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
-export const hash = (password) => hashSync(password, 10);
+export const hash = (password) => bycrypt.hashSync(password, 10);
 
-export const compare = (password, hashedPassword) => compareSync(password, hashedPassword);
+export const compare = (password, hashedPassword) => bycrypt.compareSync(password, hashedPassword);
 
 export const jwtSign = (user) => {
     const options = { expiresIn: '12hr' };

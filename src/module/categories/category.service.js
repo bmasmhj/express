@@ -1,5 +1,5 @@
 import { Category } from './Category.model.js';
-import { HttpException } from '../../errors/HttpException';
+import { HttpException } from '../../errors/HttpException.js';
 import { Sequelize } from 'sequelize';
 
 export const create = async (categoryData) => {
